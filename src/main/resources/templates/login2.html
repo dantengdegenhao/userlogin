@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
+
+<link th:href="@{./css/style.css}" rel='stylesheet' type='text/css' />
+<script type="text/javascript" th:src="@{./js/jquery.min.js}"></script>
+
+</head>
+<body>
+
+<h1>管理系统</h1>
+<div class="login-form">
+	<div class="head-info">
+		<label class="lbl-1"> </label>
+		<label class="lbl-2"> </label>
+		<label class="lbl-3"> </label>
+	</div>
+	<div class="avtar"><img th:src="@{./images/avtar.png}" /></div>
+	<h1 th:if="${msg != null }" th:text="${msg}" style="color: red"></h1>
+	<form th:action="@{login}" method="post">
+		<input name="username" type="text" class="text" value="Username" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Username';}" >
+		<div class="key">
+			<input name="password" type="password" value="Password" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Password';}">
+		</div>
+		验证码：<input type="text" name="captcha"/><img alt="验证码" th:src="@{/Captcha.jpg}" title="点击更换" id="captcha_img" />
+		(看不清<a href="javascript:void(0)" onclick="javascript:refreshCaptcha()">换一张</a>)<br/>
+		<input type="checkbox" name="rememberMe" />记住我<br/>
+		<div class="signin"><input type="submit" value="登录" ></div>
+	</form>
+</div>
+<div class="copy-rights">
+	<p>Copyright &copy; 2019.郦卓华毕业设计</p>
+</div>
+
+</body>
+<script type="text/javascript">
+    function refreshCaptcha(){
+        $("#captcha_img").attr("src","/Captcha.jpg?id=" + new Date() + Math.floor(Math.random()*24));
+    }
+</script>
+</html>
+
+
+

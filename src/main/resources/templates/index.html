@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:shiro="http://www.pollix.at/thymeleaf/shiro" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎登录系统</title>
+</head>
+<body>
+<div th:if="${username!=null}">
+欢迎你<a th:text="${username}" style="color: #dd3e3e"></a><a th:href="@{logout}">退出登录</a>
+</div>
+<div th:if="${username==null}">
+    游客欢迎您</a><a th:href="@{login}">登录</a>
+</div>
+<!--欢迎你<a shiro:principal="userName" style="color: #dd3e3e"></a><a th:href="@{logout}">退出登录</a>-->
+<div shiro:hasPermission="hrm:view">
+    有hrm:view权限<br/>
+</div>
+<div shiro:hasPermission="hrm:list">
+    有hrm:list权限<br/>
+</div>
+<div shiro:hasPermission="hrm:add">
+    有hrm:add权限<br/>
+</div>
+<div shiro:hasPermission="whm:view">
+    有whm:view权限<br/>
+</div>
+<div shiro:hasPermission="whm:list">
+    有whm:list权限<br/>
+</div>
+<div shiro:hasPermission="whm:add">
+    有whm:add权限<br/>
+</div>
+<!--<div shiro:hasPermission="user:show">
+    有user:show权限<br/>
+</div>
+<div shiro:hasPermission="user:admin">
+    有user:admin权限<br/>
+</div>
+<div shiro:hasPermission="user:role">
+    有user:role权限<br/>
+</div>
+<div shiro:hasRole="role">
+    有role角色
+</div>-->
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+
+#eureka.client.service-url.defaultZone=http://localhost:7001/eureka/
+# ��Ŀ�������
+sys:
+  # ����
+  name: sys
+  # �汾
+  version: 3.2.0
+  # ��Ȩ���
+  copyrightYear: 2019
+  # �ļ��ϴ�·��
+  profile: D:/profile/
+  # ��ȡip��ַ����
+  #addressEnabled: true
+
+
+# ��־����
+logging:
+  level:
+    com.lzh: debug
+    org.springframework: WARN
+    com.lzh.sys.mapper: debug
+
+spring:
+# ģ������
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    # ���û���
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    servlet:
+      content-type: text/html
+  jackson:
+      time-zone: GMT+8
+      date-format: yyyy-MM-dd HH:mm:ss
+  # �ļ��ϴ�
+  servlet:
+       multipart:
+         max-file-size:  30MB
+         max-request-size:  30MB
+  # ����ģ��
+  devtools:
+      restart:
+        # �Ȳ��𿪹�
+        enabled: true
+  # ��ͼ������
+
+# Redis���ô���
+  redis:
+    jedis:
+      pool:
+        # �������ӳ�����
+        max-active: 10
+        min-idle: 5
+        max-idle: 10
+        max-wait: 2000
+    # ����Redis����������
+    port: 6379
+    host: 10.80.23.104
+    # �������ӳ�ʱʱ�䣨���룩
+    timeout: 1000
+
+  datasource:
+    # ���ݿ����ӳأ�Ĭ��tomcat�Դ����ݿ����ӳ� hikari��
+      # ָ�����ݿ����ӳ�����
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    # ����Դ
+    url: jdbc:mysql://10.80.23.104:3306/sys?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    druid:
+      # 初始连接数
+      initial-size: 5
+      # 最小连接池数量
+      minIdle: 10
+      # 最大连接池数量
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+# ������������
+server:
+  port: 8080
